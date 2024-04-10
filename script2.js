@@ -44,3 +44,4 @@ function showPosition(position){
     let long = position.coords.longitude;
     getCustomWeather(lat,long);
 }
+

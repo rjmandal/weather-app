@@ -11,14 +11,15 @@
 <body>
     <div class="wrapper">
         <header>Weather App</header>
-        <div class="Tab-container">
+        <div class="tab-container">
+            
             <p class="tab" id="weather-tab">Your weather</p>
             <p class="tab" id="search-tab">search weather</p>
         </div>
         <div class="weather-container">  
              <!--grant location container  -->
-            <div class="grant-location-container">
-                <img src="grant-location.png" width="80px" height="80px" alt="icon" loading="lazy">
+            <div class="sub-container grant-location-container">
+                <img src="./assets/location.png" width="80px" height="80px" alt="icon" loading="lazy">
                 <p>Grant Location Access</p>
                 <p>Allow access to get the weather details</p>
                 <button class="grant-location-button">Grant Access</button>
@@ -28,12 +29,12 @@
         <form class="form-container" data-search-form>
             <input type="text" class="search-input" placeholder="Search by city name.....">
             <button type="submit" class="submit-button">
-                <img src="search.png" width="15px" height="15px" alt="icon" loading="lazy">
+                <img src="./assets/search.png" width="15px" height="15px" alt="icon" loading="lazy">
             </button>
         </form>
         <!-- loading screen container -->
-        <div class="loading-conttainer">
-            <img src="loading.gif" width="150px" height="150px" alt="icon">
+        <div class="loading-container">
+            <img src="./assets/loading.gif" width="150px" height="150px" alt="icon">
             <p>Loading</p>
         </div>
         <!-- show weather details container -->
@@ -50,19 +51,19 @@
             <!-- 3 card paramenters -->
             <!-- card 1 -->
             <div class="parameter">
-                <img src="wind.png" alt="icon" loading="lazy">
+                <img src="./assets/wind.png" alt="icon" loading="lazy">
                 <p>windspeed</p>
                 <p data-wind-speed></p>
             </div>
             <!-- card 2 -->
             <div class="parameter">
-                <img src="humidity.png" alt="icon" loading="lazy">
+                <img src="./assets/humidity.png" alt="icon" loading="lazy">
                 <p>Humidity</p>
                 <p data-humidity></p>
             </div>
             <!-- card 3 -->
             <div class="parameter">
-                <img src="cloud.png" alt="icon" loading="lazy">
+                <img src="./assets/cloud.png" alt="icon" loading="lazy">
                 <p>Clouds</p>
                 <p data-cloudiness></p>
             </div>
