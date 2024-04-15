@@ -1,19 +1,19 @@
 // Select the elements from the DOM
 const userTab = document.querySelector("#weather-tab"); // Select the "Your weather" tab
 const searchTab = document.querySelector("#search-tab"); // Select the "Search weather" tab
-
+// const userContainer =document.querySelector(".weather-container")
 // Select the containers from the DOM
 const weatherContainer = document.querySelector(".weather-container"); // Select the container for the weather information
 const grantAccessContainer = document.querySelector(".grant-location-container"); // Select the container for the location access grant
-const formContainer = document.querySelector(".data-search-form"); // Select the container for the search form
-const userInfoContainer = document.querySelector(".user-weather-container"); // Select the container for the user's weather information
+const formContainer = document.querySelector("[data-search-form]"); // Select the container for the search form
+const userInfoContainer = document.querySelector(".user-info-container"); // Select the container for the user's weather information
 const loadingScreen = document.querySelector(".loading-container"); // Select the container for the loading screen
 
 // Set the initial current tab to the "Your weather" tab
 let currentTab = userTab;
 
 // Store the API key in a constant
-const API_KEY = "2ef8724f40ff2b717520d88ce873fdb6";
+const API_KEY = "d1845658f92b31c64bd94f06f7188c9c";
 
 // Add the "current-tab" class to the initial current tab
 currentTab.classList.add("current-tab");
@@ -120,7 +120,7 @@ function renderWeatherInfo(weatherInfo) {
     cityName.innerText = weatherInfo?.name;
     countryIcon.src = `https://flagcdn.com/144x108/${weatherInfo?.sys?.country.toLowerCase()}.png`;
     weatherDesc.innerText = weatherInfo?.weather?.[0]?.description;
-    weatherIcon.src = `https://openweathermap.org/img/wn/${weatherInfo?.weather?.[0]?.icon}@2x.png`;
+    weatherIcon.src = `https://openweathermap.org/img/w/${weatherInfo?.weather?.[0]?.icon}.png`;
     temp.innerText = `${weatherInfo?.main?.temp}°C`;
     windSpeed.innerText = `${weatherInfo?.wind?.speed} m/s`;
     humidity.innerText = `${weatherInfo?.main?.humidity}%`;
@@ -150,10 +150,10 @@ let searchInput = document.querySelector(".search-input");
 formContainer.addEventListener("submit", (e) => {
     e.preventDefault();
     let cityName = searchInput.value;
-    if (cityName === "") {
+    if (cityName === "")
         return;
-    }
-    fetchSearchWeatherInfo(cityName);
+    else
+        fetchSearchWeatherInfo(cityName);
 });
 
 async function fetchSearchWeatherInfo(city) {
@@ -162,12 +162,11 @@ async function fetchSearchWeatherInfo(city) {
     grantAccessButton.classList.remove("active");
     try {
         const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
         );
         const data = await response.json();
         loadingScreen.classList.remove("active");
         userInfoContainer.classList.add("active");
-        // grantAccessButton.classList.add("active");
         renderWeatherInfo(data);
     } catch (error) {
 
