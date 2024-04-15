@@ -1,6 +1,6 @@
 // Select the elements from the DOM
-const userTab = document.querySelector(".weather-tab"); // Select the "Your weather" tab
-const searchTab = document.querySelector(".search-tab"); // Select the "Search weather" tab
+const userTab = document.querySelector("#weather-tab"); // Select the "Your weather" tab
+const searchTab = document.querySelector("#search-tab"); // Select the "Search weather" tab
 
 // Select the containers from the DOM
 const weatherContainer = document.querySelector(".weather-container"); // Select the container for the weather information
@@ -21,11 +21,6 @@ currentTab.classList.add("current-tab");
 // Get data from session storage
 getfromSessionStorage();
 
-/**
- * Switches the active tab.
- *
- * @param {HTMLElement} clickedTab The tab that was clicked.
- */
 function switchTab(clickedTab) {
     // If the clicked tab is not the current tab
     if (clickedTab !== currentTab) {
@@ -64,17 +59,10 @@ function switchTab(clickedTab) {
 }
 
 // Add an event listener to the user tab
-userTab.addEventListener('click', () => {
-    // Switch to the user tab
-    switchTab(userTab);
-});
 
+userTab.addEventListener("click", () => switchTab(userTab));
 // Add an event listener to the search tab
-searchTab.addEventListener('click', () => {
-    // Switch to the search tab
-    switchTab(searchTab);
-});
-
+searchTab.addEventListener("click", () => switchTab(searchTab));
 /**
  * This function checks if the user's coordinates are stored in session storage.
  * If not, it displays the grant access container.
@@ -82,7 +70,7 @@ searchTab.addEventListener('click', () => {
  */
 function getfromSessionStorage() {
     // Get the user's coordinates from session storage
-    const localCoordinates = sessionStorage.getItem("user-cordinates");
+    const localCoordinates = sessionStorage.getItem("user-coordinates");
 
     // If the user's coordinates are not in session storage, display the grant access container
     if (!localCoordinates) {
